@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Daftar Siswa — XII TJKT A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: { ink:'#16181B', surface:'#202327', surface2:'#2B2F34', line:'#383D43', muted:'#9BA3AB', accent:'#22D3EE' },
+      fontFamily: { display:['Space Grotesk','sans-serif'], sans:['Inter','sans-serif'], mono:['JetBrains Mono','monospace'] }
+    } }
+  }
+</script>
+<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="bg-ink text-[#E7ECF2] antialiased">
+
+<div id="navbar"></div>
+
+<section class="border-b border-line">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8 pt-14 pb-10">
+    <p class="font-mono text-xs tracking-[0.2em] text-accent mb-3">// DAFTAR SISWA</p>
+    <h1 class="font-display text-3xl sm:text-5xl font-semibold">36 Anggota Kelas</h1>
+    <p class="text-muted mt-4 max-w-xl">Cari nama atau nomor absen untuk menemukan teman sekelasmu.</p>
+
+    <div class="mt-6 max-w-sm relative">
+      <input id="search" type="text" placeholder="Cari nama atau no. absen..."
+        class="w-full bg-surface border border-line rounded-md pl-10 pr-4 py-2.5 text-sm text-[#E7ECF2] placeholder:text-muted focus:border-accent outline-none transition" />
+      <svg class="w-4 h-4 text-muted absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-5 sm:px-8 py-12">
+  <div id="student-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+  <p id="empty-state" class="hidden text-center text-muted text-sm py-16 font-mono">
+    Tidak ada siswa yang cocok. Coba kata kunci lain.
+  </p>
+</section>
+
+<div id="footer"></div>
+
+<!-- Kartu detail siswa -->
+<div id="student-modal" class="hidden fixed inset-0 z-[60] bg-ink/90 backdrop-blur items-center justify-center p-5">
+  <div class="w-full max-w-md rounded-lg border border-line bg-surface overflow-hidden">
+    <div class="flex items-start justify-between p-6 pb-0">
+      <div class="w-16 h-16 rounded-md bg-accent/10 border border-accent/30 overflow-hidden relative">
+        <img id="modal-photo" src="" alt="" class="w-full h-full object-cover hidden"
+             onload="this.classList.remove('hidden'); this.nextElementSibling.style.display='none';"
+             onerror="this.classList.add('hidden'); this.nextElementSibling.style.display='grid';" />
+        <div id="modal-avatar" class="absolute inset-0 place-items-center font-mono text-lg text-accent grid">
+          01
+        </div>
+      </div>
+      <button id="modal-close" aria-label="Tutup" class="w-9 h-9 grid place-items-center rounded-md border border-line text-[#C4CEDD] hover:border-accent">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="p-6 pt-4">
+      <p id="modal-absen" class="font-mono text-xs text-accent tracking-[0.2em]">ABSEN #01</p>
+      <h2 id="modal-name" class="font-display text-2xl font-semibold mt-1">Nama Lengkap</h2>
+      <p id="modal-nickname" class="text-sm text-muted mt-0.5">Panggilan: —</p>
+
+      <dl class="mt-5 space-y-3 text-sm">
+        <div class="flex justify-between gap-4 border-b border-line pb-2">
+          <dt class="text-muted font-mono text-xs tracking-wide">TTL</dt>
+          <dd id="modal-birthday" class="text-right">—</dd>
+        </div>
+        <div class="flex justify-between gap-4 border-b border-line pb-2">
+          <dt class="text-muted font-mono text-xs tracking-wide">HOBI</dt>
+          <dd id="modal-hobby" class="text-right">—</dd>
+        </div>
+        <div class="flex justify-between gap-4 border-b border-line pb-2">
+          <dt class="text-muted font-mono text-xs tracking-wide">CITA-CITA</dt>
+          <dd id="modal-dream" class="text-right">—</dd>
+        </div>
+      </dl>
+
+      <blockquote id="modal-quote" class="mt-5 text-sm italic text-[#C4CEDD] border-l-2 border-accent pl-4">
+        "Quote di sini."
+      </blockquote>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Data dummy — ganti setiap field dengan data siswa yang sebenarnya.
+  // "birthday" formatnya bebas, misal "12 Mei 2008" atau "Jakarta, 12 Mei 2008".
+  const students = Array.from({ length: 36 }, (_, i) => ({
+    no: i + 1,
+    name: `Nama Siswa ${i + 1}`,
+    nickname: `Panggilan ${i + 1}`,
+    birthday: "— , 01 Januari 2008",
+    hobby: "Isi hobi di sini",
+    dream: "Isi cita-cita di sini",
+    quote: "Isi quote atau kata-kata favorit di sini.",
+  }));
+
+  const grid = document.getElementById("student-grid");
+  const emptyState = document.getElementById("empty-state");
+  const searchInput = document.getElementById("search");
+
+  function renderStudents(list) {
+    grid.innerHTML = list.map((s) => `
+      <button data-no="${s.no}" class="student-card card-hover flex items-center gap-4 rounded-lg border border-line bg-surface p-4 text-left w-full">
+        <div class="w-11 h-11 shrink-0 rounded-md bg-surface2 border border-line overflow-hidden relative">
+          <img src="assets/img/siswa/${String(s.no).padStart(2, "0")}.jpg" alt="${s.name}"
+               class="w-full h-full object-cover"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+          <div class="hidden absolute inset-0 place-items-center font-mono text-xs text-accent">
+            ${String(s.no).padStart(2, "0")}
+          </div>
+        </div>
+        <div>
+          <p class="font-medium text-sm">${s.name}</p>
+          <p class="text-xs text-muted font-mono mt-0.5">Absen #${s.no}</p>
+        </div>
+      </button>
+    `).join("");
+    emptyState.classList.toggle("hidden", list.length !== 0);
+  }
+
+  searchInput.addEventListener("input", (e) => {
+    const q = e.target.value.trim().toLowerCase();
+    const filtered = students.filter(
+      (s) => s.name.toLowerCase().includes(q) || String(s.no).includes(q)
+    );
+    renderStudents(filtered);
+  });
+
+  renderStudents(students);
+
+  // Kartu detail siswa: klik salah satu siswa untuk buka
+  const modal = document.getElementById("student-modal");
+  const modalClose = document.getElementById("modal-close");
+
+  function openModal(no) {
+    const s = students.find((x) => x.no === no);
+    if (!s) return;
+    const photo = document.getElementById("modal-photo");
+    const avatar = document.getElementById("modal-avatar");
+    // reset dulu supaya foto siswa sebelumnya tidak "nyangkut"
+    photo.classList.add("hidden");
+    avatar.style.display = "grid";
+    avatar.textContent = String(s.no).padStart(2, "0");
+    photo.src = `assets/img/siswa/${String(s.no).padStart(2, "0")}.jpg`;
+
+    document.getElementById("modal-absen").textContent = `ABSEN #${String(s.no).padStart(2, "0")}`;
+    document.getElementById("modal-name").textContent = s.name;
+    document.getElementById("modal-nickname").textContent = `Panggilan: ${s.nickname}`;
+    document.getElementById("modal-birthday").textContent = s.birthday;
+    document.getElementById("modal-hobby").textContent = s.hobby;
+    document.getElementById("modal-dream").textContent = s.dream;
+    document.getElementById("modal-quote").textContent = `"${s.quote}"`;
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+  }
+
+  function closeModal() {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+  }
+
+  grid.addEventListener("click", (e) => {
+    const card = e.target.closest(".student-card");
+    if (!card) return;
+    openModal(Number(card.dataset.no));
+  });
+
+  modalClose.addEventListener("click", closeModal);
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
+  });
+</script>
+
+<script src="assets/js/components.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Profil Kelas — XII TJKT A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: { ink:'#16181B', surface:'#202327', surface2:'#2B2F34', line:'#383D43', muted:'#9BA3AB', accent:'#22D3EE' },
+      fontFamily: { display:['Space Grotesk','sans-serif'], sans:['Inter','sans-serif'], mono:['JetBrains Mono','monospace'] }
+    } }
+  }
+</script>
+<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="bg-ink text-[#E7ECF2] antialiased">
+
+<div id="navbar"></div>
+
+<section class="border-b border-line">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8 pt-14 pb-12">
+    <p class="font-mono text-xs tracking-[0.2em] text-accent mb-3">// PROFIL</p>
+    <h1 class="font-display text-3xl sm:text-5xl font-semibold leading-tight max-w-2xl">
+      Kenalan lebih dekat sama XII TJKT A
+    </h1>
+    <p class="text-muted mt-5 max-w-2xl leading-relaxed">
+      Kelas XII TJKT A adalah bagian dari Program Keahlian Teknik Jaringan Komputer
+      dan Telekomunikasi (TJKT), salah satu jurusan di SMK yang fokus mempelajari
+      instalasi jaringan, administrasi server, hingga teknologi telekomunikasi.
+    </p>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-5 sm:px-8 py-14 grid md:grid-cols-2 gap-10">
+  <div class="rounded-lg border border-line bg-surface p-6">
+    <h2 class="font-display font-semibold text-lg mb-3 text-accent">Visi</h2>
+    <p class="text-sm text-muted leading-relaxed">
+      Menjadi kelas yang solid, disiplin, dan unggul dalam bidang jaringan komputer
+      dan telekomunikasi, serta siap bersaing di dunia industri maupun pendidikan
+      lanjutan. <span class="italic">(silakan sesuaikan dengan visi kelas kalian)</span>
+    </p>
+  </div>
+  <div class="rounded-lg border border-line bg-surface p-6">
+    <h2 class="font-display font-semibold text-lg mb-3 text-accent">Misi</h2>
+    <ul class="text-sm text-muted leading-relaxed space-y-2 list-disc list-inside">
+      <li>Membangun kekompakan dan rasa tanggung jawab antaranggota kelas.</li>
+      <li>Aktif mengikuti kegiatan sekolah dan kompetisi jurusan.</li>
+      <li>Saling membantu dalam proses belajar teori maupun praktik.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="border-t border-line bg-surface">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8 py-14">
+    <p class="font-mono text-xs tracking-[0.2em] text-accent mb-2">// WALI KELAS</p>
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-4">
+      <div class="w-20 h-20 rounded-full bg-surface2 border border-line overflow-hidden relative shrink-0">
+        <img src="assets/img/wali-kelas.jpg" alt="Foto wali kelas"
+             class="w-full h-full object-cover"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+        <div class="hidden absolute inset-0 place-items-center font-display text-2xl text-accent">WK</div>
+      </div>
+      <div>
+        <h3 class="font-display font-semibold text-xl">Nama Wali Kelas</h3>
+        <p class="text-sm text-muted mt-1">Guru Produktif TJKT — SMK Contoh</p>
+        <p class="text-sm text-muted mt-2 max-w-lg leading-relaxed">
+          Ganti bagian ini dengan nama, jabatan, dan foto wali kelas kalian yang
+          sebenarnya di file <code class="font-mono text-accent">profil.html</code>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-5 sm:px-8 py-14">
+  <p class="font-mono text-xs tracking-[0.2em] text-accent mb-2">// TENTANG JURUSAN</p>
+  <h2 class="font-display text-2xl font-semibold mb-6">Apa itu TJKT?</h2>
+  <p class="text-sm sm:text-base text-muted leading-relaxed max-w-3xl">
+    Teknik Jaringan Komputer dan Telekomunikasi (TJKT) adalah program keahlian yang
+    membekali siswa dengan kemampuan merancang, membangun, dan mengelola jaringan
+    komputer serta sistem telekomunikasi — mulai dari pengkabelan, konfigurasi
+    router dan switch, keamanan jaringan, hingga instalasi fiber optik. Lulusan
+    TJKT disiapkan untuk terjun sebagai teknisi jaringan, network administrator,
+    atau melanjutkan pendidikan di bidang teknologi informasi.
+  </p>
+</section>
+
+<div id="footer"></div>
+<script src="assets/js/components.js" defer></script>
+</body>
+</html>
