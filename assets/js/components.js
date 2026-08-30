@@ -54,13 +54,13 @@ function renderNavbar() {
       <!-- status strip -->
       <div class="hidden sm:flex items-center justify-center gap-2 py-1 text-[10px] font-mono tracking-[0.2em] text-[#5B6B87] border-b border-[#141C2E]">
         <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#22D3EE] animate-pulse"></span>
-        NODE::XII-TJKT-A &nbsp;/&nbsp; SMK &nbsp;/&nbsp; STATUS: ONLINE
+        NODE::XII-A-TJKT &nbsp;/&nbsp; SMKN 3 Banjarmasin &nbsp;/&nbsp; STATUS: ONLINE
       </div>
 
       <nav class="max-w-6xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16">
         <a href="index.html" class="flex items-center gap-2 font-display font-semibold text-[#E7ECF2] tracking-tight">
           <span class="w-8 h-8 rounded-md bg-[#22D3EE] text-[#16181B] grid place-items-center font-mono text-xs font-bold">12A</span>
-          <span class="text-base">XII TJKT A</span>
+          <span class="text-base">XII A TJKT</span>
         </a>
 
         <div class="hidden md:flex items-center gap-1">${links}</div>
@@ -105,7 +105,7 @@ function renderFooter() {
         <div>
           <div class="flex items-center gap-2 mb-3">
             <span class="w-7 h-7 rounded-md bg-[#22D3EE] text-[#16181B] grid place-items-center font-mono text-[11px] font-bold">12A</span>
-            <span class="font-display font-semibold text-[#E7ECF2]">XII TJKT A</span>
+            <span class="font-display font-semibold text-[#E7ECF2]">XII A TJKT</span>
           </div>
           <p class="text-sm text-[#7C8AA3] leading-relaxed">
             Teknik Jaringan Komputer dan Telekomunikasi.<br/>
@@ -133,7 +133,7 @@ function renderFooter() {
         </div>
       </div>
       <div class="border-t border-[#141C2E] py-4 text-center text-[11px] font-mono text-[#4B5872]">
-        &copy; ${year} XII TJKT A &mdash; Dibuat dengan HTML, Tailwind CSS &amp; JavaScript
+        &copy; ${year} XII A TJKT &mdash; SMKN 3 Banjarmasin
       </div>
     </footer>
   `;
