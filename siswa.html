@@ -7,15 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: { extend: {
-      colors: { ink:'#16181B', surface:'#202327', surface2:'#2B2F34', line:'#383D43', muted:'#9BA3AB', accent:'#22D3EE' },
-      fontFamily: { display:['Space Grotesk','sans-serif'], sans:['Inter','sans-serif'], mono:['JetBrains Mono','monospace'] }
-    } }
-  }
-</script>
 <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body class="bg-ink text-[#E7ECF2] antialiased">
@@ -49,8 +40,8 @@
 
 <!-- Kartu detail siswa -->
 <div id="student-modal" class="hidden fixed inset-0 z-[60] bg-ink/90 backdrop-blur items-center justify-center p-5">
-  <div class="w-full max-w-md rounded-lg border border-line bg-surface overflow-hidden">
-    <div class="flex items-start justify-between p-6 pb-0">
+  <div class="w-full max-w-md max-h-[90vh] overflow-y-auto rounded-lg border border-line bg-surface p-6">
+    <div class="flex items-start justify-between">
       <div class="w-16 h-16 rounded-md bg-accent/10 border border-accent/30 overflow-hidden relative">
         <img id="modal-photo" src="" alt="" class="w-full h-full object-cover hidden"
              onload="this.classList.remove('hidden'); this.nextElementSibling.style.display='none';"
@@ -64,7 +55,7 @@
       </button>
     </div>
 
-    <div class="p-6 pt-4">
+    <div class="pt-4">
       <p id="modal-absen" class="font-mono text-xs text-accent tracking-[0.2em]">ABSEN #01</p>
       <h2 id="modal-name" class="font-display text-2xl font-semibold mt-1">Nama Lengkap</h2>
       <p id="modal-nickname" class="text-sm text-muted mt-0.5">Panggilan: —</p>

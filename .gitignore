@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build & temporary files
+.vercel
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Executables
+*.exe
