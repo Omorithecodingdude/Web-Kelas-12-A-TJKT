@@ -126,8 +126,8 @@ function renderFooter() {
         <div>
           <p class="text-xs font-mono tracking-[0.2em] text-[#5B6B87] mb-3">SOSIAL MEDIA</p>
           <ul class="space-y-2 text-sm text-[#9BA3AB]">
-            <li><a href="https://instagram.com/xiitjkt.a" target="_blank" rel="noopener noreferrer" class="hover:text-[#22D3EE] transition-colors">Instagram &mdash; @xiitjkt.a</a></li>
-            <li><a href="https://tiktok.com/@xiitjkt.a" target="_blank" rel="noopener noreferrer" class="hover:text-[#22D3EE] transition-colors">TikTok &mdash; @xiitjkt.a</a></li>
+            <li><a href="https://instagram.com/tjkthackers.a" target="_blank" rel="noopener noreferrer" class="hover:text-[#22D3EE] transition-colors">Instagram &mdash; tjkthackers.a</a></li>
+            <li><a href="https://tiktok.com/@officialtjkt.a" target="_blank" rel="noopener noreferrer" class="hover:text-[#22D3EE] transition-colors">TikTok &mdash; @officialtjkt.a</a></li>
             <li><a href="kontak.html" class="text-muted hover:underline">Lihat semua kontak &rarr;</a></li>
           </ul>
         </div>
