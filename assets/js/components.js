@@ -6,14 +6,14 @@
 // ============================================================
 
 const NAV_LINKS = [
-  { href: "index.html", label: "Beranda" },
-  { href: "profil.html", label: "Profil" },
-  { href: "struktur.html", label: "Struktur" },
-  { href: "siswa.html", label: "Siswa" },
-  { href: "prestasi.html", label: "Prestasi" },
-  { href: "berita.html", label: "Berita" },
-  { href: "galeri.html", label: "Galeri" },
-  { href: "kontak.html", label: "Kontak" },
+  { href: "/index.html", label: "Beranda" },
+  { href: "/main/profil.html", label: "Profil" },
+  { href: "/main/struktur.html", label: "Struktur" },
+  { href: "/main/siswa.html", label: "Siswa" },
+  { href: "/main/prestasi.html", label: "Prestasi" },
+  { href: "/main/berita.html", label: "Berita" },
+  { href: "/main/galeri.html", label: "Galeri" },
+  { href: "/main/kontak.html", label: "Kontak" },
 ];
 
 function currentPage() {
@@ -58,7 +58,7 @@ function renderNavbar() {
       </div>
 
       <nav class="max-w-6xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16">
-        <a href="index.html" class="flex items-center gap-2 font-display font-semibold text-[#E7ECF2] tracking-tight">
+        <a href="/index.html" class="flex items-center gap-2 font-display font-semibold text-[#E7ECF2] tracking-tight">
           <span class="w-8 h-8 rounded-md bg-[#22D3EE] text-[#16181B] grid place-items-center font-mono text-xs font-bold">12A</span>
           <span class="text-base">XII A TJKT</span>
         </a>
@@ -126,7 +126,7 @@ function renderFooter() {
         <div>
           <p class="text-xs font-mono tracking-[0.2em] text-[#5B6B87] mb-3">SOSIAL MEDIA</p>
           <ul class="space-y-2 text-sm text-[#9BA3AB]">
-            <li><a href="https://instagram.com/tjkthackers.a" target="_blank" rel="noopener noreferrer" class="hover:text-[#22D3EE] transition-colors">Instagram &mdash; tjkthackers.a</a></li>
+            <li><a href="https://instagram.com/tjkthackers.a" target="_blank" rel="noopener noreferrer" class="hover:text-[#22D3EE] transition-colors">Instagram &mdash; @tjkthackers.a</a></li>
             <li><a href="https://tiktok.com/@officialtjkt.a" target="_blank" rel="noopener noreferrer" class="hover:text-[#22D3EE] transition-colors">TikTok &mdash; @officialtjkt.a</a></li>
             <li><a href="kontak.html" class="text-muted hover:underline">Lihat semua kontak &rarr;</a></li>
           </ul>
