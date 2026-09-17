@@ -440,7 +440,7 @@
     photo.classList.add("hidden");
     avatar.style.display = "grid";
     avatar.textContent = String(s.no).padStart(2, "0");
-    photo.src = `assets/img/siswa/${String(s.no).padStart(2, "0")}.jpg`;
+    photo.src = `/assets/img/siswa/${String(s.no).padStart(2, "0")}.jpg`;
 
     document.getElementById("modal-absen").textContent = `ABSEN #${String(s.no).padStart(2, "0")}`;
     document.getElementById("modal-name").textContent = s.name;
