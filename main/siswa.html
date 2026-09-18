@@ -40,48 +40,56 @@
 
 <!-- Kartu detail siswa -->
 <div id="student-modal" class="hidden fixed inset-0 z-[60] bg-ink/90 backdrop-blur items-center justify-center p-4 sm:p-6">
-  <div class="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-xl border border-line bg-surface shadow-2xl relative">
-    <!-- Banner Header Foto Siswa -->
-    <div class="w-full h-56 sm:h-64 bg-surface2 relative overflow-hidden border-b border-line">
-      <img id="modal-photo" src="" alt="" class="w-full h-full object-cover object-top hidden"
-           onload="this.classList.remove('hidden'); this.nextElementSibling.style.display='none';"
-           onerror="this.classList.add('hidden'); this.nextElementSibling.style.display='grid';" />
-      <div id="modal-avatar" class="absolute inset-0 place-items-center font-mono text-5xl font-bold text-accent/60 grid bg-gradient-to-br from-accent/20 via-surface2 to-surface">
-        01
-      </div>
-      <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-black/40 pointer-events-none"></div>
+  <div class="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl border border-line bg-surface shadow-2xl relative">
+    <!-- Header Banner Dekoratif -->
+    <div class="w-full h-28 sm:h-32 bg-gradient-to-r from-accent/25 via-surface2 to-accent/10 relative overflow-hidden border-b border-line">
+      <div class="absolute inset-0 node-grid opacity-70 pointer-events-none"></div>
       
-      <!-- Tombol Tutup di atas banner -->
-      <button id="modal-close" aria-label="Tutup" class="absolute top-4 right-4 w-9 h-9 grid place-items-center rounded-md bg-ink/80 backdrop-blur border border-line text-[#C4CEDD] hover:border-accent hover:text-white transition">
+      <!-- Tombol Tutup di pojok kanan atas banner -->
+      <button id="modal-close" aria-label="Tutup" class="absolute top-3.5 right-3.5 w-8 h-8 grid place-items-center rounded-md bg-ink/75 backdrop-blur border border-line text-[#C4CEDD] hover:border-accent hover:text-white transition z-20">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
-
-      <!-- Badge Absen -->
-      <div class="absolute bottom-4 left-6">
-        <span id="modal-absen" class="font-mono text-xs font-semibold text-accent tracking-[0.2em] bg-ink/80 backdrop-blur border border-accent/40 px-3 py-1 rounded">ABSEN #01</span>
-      </div>
     </div>
 
-    <div class="p-6">
-      <h2 id="modal-name" class="font-display text-2xl sm:text-3xl font-semibold">Nama Lengkap</h2>
-      <p id="modal-nickname" class="text-sm text-muted mt-1">Panggilan: —</p>
+    <!-- Konten Biodata Siswa -->
+    <div class="px-6 pb-6">
+      <!-- Foto Siswa + Identitas Singkat (Overlap Banner) -->
+      <div class="flex items-end gap-4 -mt-14 sm:-mt-16 mb-5 relative z-10">
+        <!-- Bingkai Pas Foto Proporsional (3:4) -->
+        <div class="w-28 sm:w-32 aspect-[3/4] rounded-xl border-4 border-surface bg-surface2 shadow-2xl overflow-hidden relative shrink-0">
+          <img id="modal-photo" src="" alt="" class="w-full h-full object-cover object-center hidden"
+               onload="this.classList.remove('hidden'); this.nextElementSibling.style.display='none';"
+               onerror="this.classList.add('hidden'); this.nextElementSibling.style.display='grid';" />
+          <div id="modal-avatar" class="absolute inset-0 place-items-center font-mono text-3xl font-bold text-accent/70 grid bg-gradient-to-br from-accent/20 via-surface2 to-surface">
+            01
+          </div>
+        </div>
 
-      <dl class="mt-6 space-y-3 text-sm">
-        <div class="flex justify-between gap-4 border-b border-line pb-2.5">
+        <!-- Nama, Nickname & Badge Absen -->
+        <div class="flex-1 pb-1">
+          <span id="modal-absen" class="inline-block font-mono text-xs font-semibold text-accent tracking-[0.15em] bg-accent/10 border border-accent/30 px-2.5 py-0.5 rounded-full mb-1">ABSEN #01</span>
+          <h2 id="modal-name" class="font-display text-xl sm:text-2xl font-bold text-[#E7ECF2] leading-tight">Nama Lengkap</h2>
+          <p id="modal-nickname" class="text-xs text-muted font-mono mt-0.5">Panggilan: —</p>
+        </div>
+      </div>
+
+      <!-- Detail Biodata -->
+      <dl class="space-y-2.5 text-sm border-t border-line/60 pt-4">
+        <div class="flex justify-between gap-4 border-b border-line/40 pb-2">
           <dt class="text-muted font-mono text-xs tracking-wide">TTL</dt>
-          <dd id="modal-birthday" class="text-right font-medium">—</dd>
+          <dd id="modal-birthday" class="text-right font-medium text-xs sm:text-sm">—</dd>
         </div>
-        <div class="flex justify-between gap-4 border-b border-line pb-2.5">
+        <div class="flex justify-between gap-4 border-b border-line/40 pb-2">
           <dt class="text-muted font-mono text-xs tracking-wide">HOBI</dt>
-          <dd id="modal-hobby" class="text-right font-medium">—</dd>
+          <dd id="modal-hobby" class="text-right font-medium text-xs sm:text-sm">—</dd>
         </div>
-        <div class="flex justify-between gap-4 border-b border-line pb-2.5">
+        <div class="flex justify-between gap-4 border-b border-line/40 pb-2">
           <dt class="text-muted font-mono text-xs tracking-wide">CITA-CITA</dt>
-          <dd id="modal-dream" class="text-right font-medium">—</dd>
+          <dd id="modal-dream" class="text-right font-medium text-xs sm:text-sm">—</dd>
         </div>
       </dl>
 
-      <blockquote id="modal-quote" class="mt-6 text-sm italic text-[#C4CEDD] border-l-2 border-accent pl-4 bg-surface2/30 py-3 rounded-r">
+      <blockquote id="modal-quote" class="mt-4 text-xs sm:text-sm italic text-[#C4CEDD] border-l-2 border-accent pl-3.5 bg-surface2/30 py-2.5 rounded-r">
         "Quote di sini."
       </blockquote>
     </div>
