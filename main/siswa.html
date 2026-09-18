@@ -30,7 +30,7 @@
 </section>
 
 <section class="max-w-5xl mx-auto px-5 sm:px-8 py-12">
-  <div id="student-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+  <div id="student-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
   <p id="empty-state" class="hidden text-center text-muted text-sm py-16 font-mono">
     Tidak ada siswa yang cocok. Coba kata kunci lain.
   </p>
@@ -39,43 +39,49 @@
 <div id="footer"></div>
 
 <!-- Kartu detail siswa -->
-<div id="student-modal" class="hidden fixed inset-0 z-[60] bg-ink/90 backdrop-blur items-center justify-center p-5">
-  <div class="w-full max-w-md max-h-[90vh] overflow-y-auto rounded-lg border border-line bg-surface p-6">
-    <div class="flex items-start justify-between">
-      <div class="w-16 h-16 rounded-md bg-accent/10 border border-accent/30 overflow-hidden relative">
-        <img id="modal-photo" src="" alt="" class="w-full h-full object-cover hidden"
-             onload="this.classList.remove('hidden'); this.nextElementSibling.style.display='none';"
-             onerror="this.classList.add('hidden'); this.nextElementSibling.style.display='grid';" />
-        <div id="modal-avatar" class="absolute inset-0 place-items-center font-mono text-lg text-accent grid">
-          01
-        </div>
+<div id="student-modal" class="hidden fixed inset-0 z-[60] bg-ink/90 backdrop-blur items-center justify-center p-4 sm:p-6">
+  <div class="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-xl border border-line bg-surface shadow-2xl relative">
+    <!-- Banner Header Foto Siswa -->
+    <div class="w-full h-56 sm:h-64 bg-surface2 relative overflow-hidden border-b border-line">
+      <img id="modal-photo" src="" alt="" class="w-full h-full object-cover object-top hidden"
+           onload="this.classList.remove('hidden'); this.nextElementSibling.style.display='none';"
+           onerror="this.classList.add('hidden'); this.nextElementSibling.style.display='grid';" />
+      <div id="modal-avatar" class="absolute inset-0 place-items-center font-mono text-5xl font-bold text-accent/60 grid bg-gradient-to-br from-accent/20 via-surface2 to-surface">
+        01
       </div>
-      <button id="modal-close" aria-label="Tutup" class="w-9 h-9 grid place-items-center rounded-md border border-line text-[#C4CEDD] hover:border-accent">
+      <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-black/40 pointer-events-none"></div>
+      
+      <!-- Tombol Tutup di atas banner -->
+      <button id="modal-close" aria-label="Tutup" class="absolute top-4 right-4 w-9 h-9 grid place-items-center rounded-md bg-ink/80 backdrop-blur border border-line text-[#C4CEDD] hover:border-accent hover:text-white transition">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
+
+      <!-- Badge Absen -->
+      <div class="absolute bottom-4 left-6">
+        <span id="modal-absen" class="font-mono text-xs font-semibold text-accent tracking-[0.2em] bg-ink/80 backdrop-blur border border-accent/40 px-3 py-1 rounded">ABSEN #01</span>
+      </div>
     </div>
 
-    <div class="pt-4">
-      <p id="modal-absen" class="font-mono text-xs text-accent tracking-[0.2em]">ABSEN #01</p>
-      <h2 id="modal-name" class="font-display text-2xl font-semibold mt-1">Nama Lengkap</h2>
-      <p id="modal-nickname" class="text-sm text-muted mt-0.5">Panggilan: —</p>
+    <div class="p-6">
+      <h2 id="modal-name" class="font-display text-2xl sm:text-3xl font-semibold">Nama Lengkap</h2>
+      <p id="modal-nickname" class="text-sm text-muted mt-1">Panggilan: —</p>
 
-      <dl class="mt-5 space-y-3 text-sm">
-        <div class="flex justify-between gap-4 border-b border-line pb-2">
+      <dl class="mt-6 space-y-3 text-sm">
+        <div class="flex justify-between gap-4 border-b border-line pb-2.5">
           <dt class="text-muted font-mono text-xs tracking-wide">TTL</dt>
-          <dd id="modal-birthday" class="text-right">—</dd>
+          <dd id="modal-birthday" class="text-right font-medium">—</dd>
         </div>
-        <div class="flex justify-between gap-4 border-b border-line pb-2">
+        <div class="flex justify-between gap-4 border-b border-line pb-2.5">
           <dt class="text-muted font-mono text-xs tracking-wide">HOBI</dt>
-          <dd id="modal-hobby" class="text-right">—</dd>
+          <dd id="modal-hobby" class="text-right font-medium">—</dd>
         </div>
-        <div class="flex justify-between gap-4 border-b border-line pb-2">
+        <div class="flex justify-between gap-4 border-b border-line pb-2.5">
           <dt class="text-muted font-mono text-xs tracking-wide">CITA-CITA</dt>
-          <dd id="modal-dream" class="text-right">—</dd>
+          <dd id="modal-dream" class="text-right font-medium">—</dd>
         </div>
       </dl>
 
-      <blockquote id="modal-quote" class="mt-5 text-sm italic text-[#C4CEDD] border-l-2 border-accent pl-4">
+      <blockquote id="modal-quote" class="mt-6 text-sm italic text-[#C4CEDD] border-l-2 border-accent pl-4 bg-surface2/30 py-3 rounded-r">
         "Quote di sini."
       </blockquote>
     </div>
@@ -178,7 +184,7 @@
     {
       no: 11,
       name: "Ilham Maulana",
-      name: "Ilham",
+      nickname: "Ilham",
       birthday: "-,",
       hobby: "_",
       dream: "-",
@@ -398,22 +404,40 @@
   const searchInput = document.getElementById("search");
 
   function renderStudents(list) {
-    grid.innerHTML = list.map((s) => `
-      <button data-no="${s.no}" class="student-card card-hover flex items-center gap-4 rounded-lg border border-line bg-surface p-4 text-left w-full">
-        <div class="w-11 h-11 shrink-0 rounded-md bg-surface2 border border-line overflow-hidden relative">
-          <img src="/assets/img/siswa/${String(s.no).padStart(2, "0")}.jpg" alt="${s.name}"
-               class="w-full h-full object-cover"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
-          <div class="hidden absolute inset-0 place-items-center font-mono text-xs text-accent">
-            ${String(s.no).padStart(2, "0")}
+    grid.innerHTML = list.map((s) => {
+      const padNo = String(s.no).padStart(2, "0");
+      const nicknameDisplay = (s.nickname && s.nickname !== "-") ? `Panggilan: ${s.nickname}` : "XII A TJKT";
+      return `
+        <button data-no="${s.no}" class="student-card card-hover group flex flex-col rounded-xl border border-line bg-surface overflow-hidden text-left w-full transition focus:outline-none">
+          <!-- Banner Foto Siswa -->
+          <div class="w-full h-48 sm:h-52 bg-surface2 relative overflow-hidden">
+            <img src="/assets/img/siswa/${padNo}.jpg" alt="${s.name}"
+                 class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="hidden absolute inset-0 place-items-center bg-gradient-to-br from-accent/20 via-surface2 to-surface font-mono text-4xl font-bold text-accent/60">
+              ${padNo}
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-60 pointer-events-none"></div>
+            <!-- Badge Absen -->
+            <div class="absolute top-3 right-3 px-2.5 py-0.5 rounded-md bg-ink/80 backdrop-blur border border-line font-mono text-xs text-accent">
+              #${padNo}
+            </div>
           </div>
-        </div>
-        <div>
-          <p class="font-medium text-sm">${s.name}</p>
-          <p class="text-xs text-muted font-mono mt-0.5">Absen #${s.no}</p>
-        </div>
-      </button>
-    `).join("");
+
+          <!-- Info Siswa -->
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-display font-semibold text-base text-[#E7ECF2] group-hover:text-accent transition-colors line-clamp-1">${s.name}</h3>
+              <p class="text-xs text-muted font-mono mt-1">${nicknameDisplay}</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-line/60 flex items-center justify-between text-xs text-muted font-mono">
+              <span class="group-hover:text-[#E7ECF2] transition-colors">Lihat Biodata</span>
+              <span class="text-accent group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </div>
+          </div>
+        </button>
+      `;
+    }).join("");
     emptyState.classList.toggle("hidden", list.length !== 0);
   }
 
@@ -434,21 +458,22 @@
   function openModal(no) {
     const s = students.find((x) => x.no === no);
     if (!s) return;
+    const padNo = String(s.no).padStart(2, "0");
     const photo = document.getElementById("modal-photo");
     const avatar = document.getElementById("modal-avatar");
     // reset dulu supaya foto siswa sebelumnya tidak "nyangkut"
     photo.classList.add("hidden");
     avatar.style.display = "grid";
-    avatar.textContent = String(s.no).padStart(2, "0");
-    photo.src = `/assets/img/siswa/${String(s.no).padStart(2, "0")}.jpg`;
+    avatar.textContent = padNo;
+    photo.src = `/assets/img/siswa/${padNo}.jpg`;
 
-    document.getElementById("modal-absen").textContent = `ABSEN #${String(s.no).padStart(2, "0")}`;
+    document.getElementById("modal-absen").textContent = `ABSEN #${padNo}`;
     document.getElementById("modal-name").textContent = s.name;
-    document.getElementById("modal-nickname").textContent = `Panggilan: ${s.nickname}`;
-    document.getElementById("modal-birthday").textContent = s.birthday;
-    document.getElementById("modal-hobby").textContent = s.hobby;
-    document.getElementById("modal-dream").textContent = s.dream;
-    document.getElementById("modal-quote").textContent = `"${s.quote}"`;
+    document.getElementById("modal-nickname").textContent = (s.nickname && s.nickname !== "-") ? `Panggilan: ${s.nickname}` : "Panggilan: —";
+    document.getElementById("modal-birthday").textContent = (s.birthday && s.birthday !== "-,") ? s.birthday : "—";
+    document.getElementById("modal-hobby").textContent = (s.hobby && s.hobby !== "-") ? s.hobby : "—";
+    document.getElementById("modal-dream").textContent = (s.dream && s.dream !== "-") ? s.dream : "—";
+    document.getElementById("modal-quote").textContent = (s.quote && s.quote !== "-") ? `"${s.quote}"` : "Belum menambahkan quote.";
     modal.classList.remove("hidden");
     modal.classList.add("flex");
   }

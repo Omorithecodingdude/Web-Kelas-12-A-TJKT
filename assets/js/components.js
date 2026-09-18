@@ -6,7 +6,7 @@
 // ============================================================
 
 const NAV_LINKS = [
-  { href: "/index.html", label: "Beranda" },
+  { href: "/", label: "Beranda" },
   { href: "/main/profil.html", label: "Profil" },
   { href: "/main/struktur.html", label: "Struktur" },
   { href: "/main/siswa.html", label: "Siswa" },
@@ -16,18 +16,23 @@ const NAV_LINKS = [
   { href: "/main/kontak.html", label: "Kontak" },
 ];
 
-function currentPage() {
-  const path = window.location.pathname.split("/").pop();
-  return path === "" ? "index.html" : path;
+function isLinkActive(linkHref) {
+  const currentPath = window.location.pathname;
+  const clean = (p) => p.replace(/\/index(\.html)?$/, "").replace(/\/$/, "").replace(/\.html$/, "");
+  const currentClean = clean(currentPath);
+  const linkClean = clean(linkHref);
+
+  if (linkClean === "" && currentClean === "") return true;
+  if (linkClean !== "" && currentClean === linkClean) return true;
+  return false;
 }
 
 function renderNavbar() {
   const mount = document.getElementById("navbar");
   if (!mount) return;
-  const active = currentPage();
 
   const links = NAV_LINKS.map((link) => {
-    const isActive = link.href === active;
+    const isActive = isLinkActive(link.href);
     return `
       <a href="${link.href}"
          class="nav-link relative px-3 py-2 text-sm tracking-wide transition-colors ${
@@ -39,11 +44,11 @@ function renderNavbar() {
   }).join("");
 
   const mobileLinks = NAV_LINKS.map((link) => {
-    const isActive = link.href === active;
+    const isActive = isLinkActive(link.href);
     return `
       <a href="${link.href}"
          class="block px-4 py-3 text-sm border-b border-[#2B2F34] ${
-           isActive ? "text-[#22D3EE]" : "text-[#C4CEDD]"
+           isActive ? "text-[#22D3EE] font-medium" : "text-[#C4CEDD]"
          }">
         ${link.label}
       </a>`;
@@ -58,7 +63,7 @@ function renderNavbar() {
       </div>
 
       <nav class="max-w-6xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16">
-        <a href="/index.html" class="flex items-center gap-2 font-display font-semibold text-[#E7ECF2] tracking-tight">
+        <a href="/" class="flex items-center gap-2 font-display font-semibold text-[#E7ECF2] tracking-tight">
           <span class="w-8 h-8 rounded-md bg-[#22D3EE] text-[#16181B] grid place-items-center font-mono text-xs font-bold">12A</span>
           <span class="text-base">XII A TJKT</span>
         </a>
@@ -116,10 +121,10 @@ function renderFooter() {
         <div>
           <p class="text-xs font-mono tracking-[0.2em] text-[#5B6B87] mb-3">NAVIGASI</p>
           <ul class="space-y-2 text-sm text-[#9BA3AB]">
-            <li><a href="profil.html" class="hover:text-[#22D3EE] transition-colors">Profil Kelas</a></li>
-            <li><a href="struktur.html" class="hover:text-[#22D3EE] transition-colors">Struktur Organisasi</a></li>
-            <li><a href="siswa.html" class="hover:text-[#22D3EE] transition-colors">Daftar Siswa</a></li>
-            <li><a href="prestasi.html" class="hover:text-[#22D3EE] transition-colors">Prestasi</a></li>
+            <li><a href="/main/profil.html" class="hover:text-[#22D3EE] transition-colors">Profil Kelas</a></li>
+            <li><a href="/main/struktur.html" class="hover:text-[#22D3EE] transition-colors">Struktur Organisasi</a></li>
+            <li><a href="/main/siswa.html" class="hover:text-[#22D3EE] transition-colors">Daftar Siswa</a></li>
+            <li><a href="/main/prestasi.html" class="hover:text-[#22D3EE] transition-colors">Prestasi</a></li>
           </ul>
         </div>
 
@@ -128,7 +133,7 @@ function renderFooter() {
           <ul class="space-y-2 text-sm text-[#9BA3AB]">
             <li><a href="https://instagram.com/tjkthackers.a" target="_blank" rel="noopener noreferrer" class="hover:text-[#22D3EE] transition-colors">Instagram &mdash; @tjkthackers.a</a></li>
             <li><a href="https://tiktok.com/@officialtjkt.a" target="_blank" rel="noopener noreferrer" class="hover:text-[#22D3EE] transition-colors">TikTok &mdash; @officialtjkt.a</a></li>
-            <li><a href="kontak.html" class="text-muted hover:underline">Lihat semua kontak &rarr;</a></li>
+            <li><a href="/main/kontak.html" class="text-muted hover:underline">Lihat semua kontak &rarr;</a></li>
           </ul>
         </div>
       </div>

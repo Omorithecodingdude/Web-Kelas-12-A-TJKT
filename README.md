@@ -8,17 +8,20 @@ Tidak butuh build tool, langsung bisa dibuka di browser atau di-deploy sebagai s
 ```
 web-kelas/
 ├── index.html        # Beranda
-├── profil.html        # Profil kelas, visi misi, wali kelas
-├── struktur.html       # Struktur organisasi kelas
-├── siswa.html         # Daftar 36 siswa (bisa dicari)
-├── prestasi.html       # Timeline prestasi kelas
-├── berita.html        # Berita / blog kelas
-├── galeri.html        # Galeri foto
-├── kontak.html        # Link Instagram & TikTok kelas
+├── main/             # Halaman utama web
+│   ├── profil.html   # Profil kelas, visi misi, wali kelas
+│   ├── struktur.html # Struktur organisasi kelas
+│   ├── siswa.html    # Daftar 34 siswa (pencarian + banner foto + modal detail)
+│   ├── prestasi.html # Timeline prestasi kelas
+│   ├── berita.html   # Berita / blog kelas
+│   ├── galeri.html   # Galeri foto
+│   └── kontak.html   # Link Instagram & TikTok kelas
 ├── assets/
-│   ├── css/main.css    # Custom CSS di luar Tailwind
+│   ├── css/          # Tailwind CSS input.css & output main.css
 │   ├── js/components.js  # Navbar & footer bersama semua halaman
-│   └── img/          # Taruh foto asli di sini
+│   └── img/          # Foto siswa (assets/img/siswa/) & aset gambar
+├── package.json      # Konfigurasi dependency & script build Tailwind CSS
+├── vercel.json       # Konfigurasi deployment Vercel
 └── README.md
 ```
 
