@@ -5,26 +5,26 @@
 // di HTML, lalu load file ini sebagai <script defer>.
 // ============================================================
 
+const isInMain = window.location.pathname.includes("/main/") || window.location.href.includes("/main/");
+const rootPath = isInMain ? "../" : "./";
+
 const NAV_LINKS = [
-  { href: "/", label: "Beranda" },
-  { href: "/main/profil.html", label: "Profil" },
-  { href: "/main/struktur.html", label: "Struktur" },
-  { href: "/main/siswa.html", label: "Siswa" },
-  { href: "/main/prestasi.html", label: "Prestasi" },
-  { href: "/main/berita.html", label: "Berita" },
-  { href: "/main/galeri.html", label: "Galeri" },
-  { href: "/main/kontak.html", label: "Kontak" },
+  { href: `${rootPath}index.html`, label: "Beranda" },
+  { href: `${rootPath}main/profil.html`, label: "Profil" },
+  { href: `${rootPath}main/struktur.html`, label: "Struktur" },
+  { href: `${rootPath}main/siswa.html`, label: "Siswa" },
+  { href: `${rootPath}main/prestasi.html`, label: "Prestasi" },
+  { href: `${rootPath}main/berita.html`, label: "Berita" },
+  { href: `${rootPath}main/galeri.html`, label: "Galeri" },
+  { href: `${rootPath}main/kontak.html`, label: "Kontak" },
 ];
 
 function isLinkActive(linkHref) {
-  const currentPath = window.location.pathname;
-  const clean = (p) => p.replace(/\/index(\.html)?$/, "").replace(/\/$/, "").replace(/\.html$/, "");
-  const currentClean = clean(currentPath);
+  const clean = (p) => p.replace(/\\/g, "/").split("/").pop().replace(/(\.html)?$/, "").replace(/^index$/, "");
+  const currentClean = clean(window.location.pathname);
   const linkClean = clean(linkHref);
 
-  if (linkClean === "" && currentClean === "") return true;
-  if (linkClean !== "" && currentClean === linkClean) return true;
-  return false;
+  return currentClean === linkClean;
 }
 
 function renderNavbar() {
@@ -63,7 +63,7 @@ function renderNavbar() {
       </div>
 
       <nav class="max-w-6xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16">
-        <a href="/" class="flex items-center gap-2 font-display font-semibold text-[#E7ECF2] tracking-tight">
+        <a href="${rootPath}index.html" class="flex items-center gap-2 font-display font-semibold text-[#E7ECF2] tracking-tight">
           <span class="w-8 h-8 rounded-md bg-[#22D3EE] text-[#16181B] grid place-items-center font-mono text-xs font-bold">12A</span>
           <span class="text-base">XII A TJKT</span>
         </a>
@@ -121,10 +121,10 @@ function renderFooter() {
         <div>
           <p class="text-xs font-mono tracking-[0.2em] text-[#5B6B87] mb-3">NAVIGASI</p>
           <ul class="space-y-2 text-sm text-[#9BA3AB]">
-            <li><a href="/main/profil.html" class="hover:text-[#22D3EE] transition-colors">Profil Kelas</a></li>
-            <li><a href="/main/struktur.html" class="hover:text-[#22D3EE] transition-colors">Struktur Organisasi</a></li>
-            <li><a href="/main/siswa.html" class="hover:text-[#22D3EE] transition-colors">Daftar Siswa</a></li>
-            <li><a href="/main/prestasi.html" class="hover:text-[#22D3EE] transition-colors">Prestasi</a></li>
+            <li><a href="${rootPath}main/profil.html" class="hover:text-[#22D3EE] transition-colors">Profil Kelas</a></li>
+            <li><a href="${rootPath}main/struktur.html" class="hover:text-[#22D3EE] transition-colors">Struktur Organisasi</a></li>
+            <li><a href="${rootPath}main/siswa.html" class="hover:text-[#22D3EE] transition-colors">Daftar Siswa</a></li>
+            <li><a href="${rootPath}main/prestasi.html" class="hover:text-[#22D3EE] transition-colors">Prestasi</a></li>
           </ul>
         </div>
 
@@ -133,7 +133,7 @@ function renderFooter() {
           <ul class="space-y-2 text-sm text-[#9BA3AB]">
             <li><a href="https://instagram.com/tjkthackers.a" target="_blank" rel="noopener noreferrer" class="hover:text-[#22D3EE] transition-colors">Instagram &mdash; @tjkthackers.a</a></li>
             <li><a href="https://tiktok.com/@officialtjkt.a" target="_blank" rel="noopener noreferrer" class="hover:text-[#22D3EE] transition-colors">TikTok &mdash; @officialtjkt.a</a></li>
-            <li><a href="/main/kontak.html" class="text-muted hover:underline">Lihat semua kontak &rarr;</a></li>
+            <li><a href="${rootPath}main/kontak.html" class="text-muted hover:underline">Lihat semua kontak &rarr;</a></li>
           </ul>
         </div>
       </div>
